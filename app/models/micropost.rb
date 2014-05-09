@@ -3,7 +3,8 @@ class Micropost < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   validates :content, presence: true, length: { maximum: 140 }
   validates :user_id, presence: true
-
+  include SimpleHashtag::Hashtaggable
+  hashtaggable_attribute :content
   # Returns microposts from the users being followed by the given user.
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relationships
