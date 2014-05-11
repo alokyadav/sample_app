@@ -11,7 +11,6 @@ module HashtagsHelper
     klass        = hashtaggable.class.to_s.underscore
     view_dirname = klass.pluralize
     partial      = klass
-    byebug
-    render "#{view_dirname}/#{partial}", {klass.to_sym => hashtaggable}
+    render "shared/feed_item", {:feed_item => hashtaggable}
   end
 end
