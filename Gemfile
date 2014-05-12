@@ -3,16 +3,25 @@ ruby '2.1.1'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.4'
+
 gem 'bootstrap-sass', '2.3.2.0'
+#
 gem 'sprockets', '2.11.0'
+#used for encryption of passwords
 gem 'bcrypt-ruby', '3.1.2'
+#used for automatically populating the database with fake entries
 gem 'faker', '1.1.2'
+#paginate the feeds/users so that there are only some fixed amount of feeds/users on a page default: 30
 gem 'will_paginate', '3.0.4'
+#
 gem 'bootstrap-will_paginate', '0.0.9'
+#a simple hashtag gem used to parse a tweet and store tags and their corresponding tags in table used in micropost model
 gem 'simple_hashtag'
 
 group :development, :test do
+  #database for app
   gem 'sqlite3', '1.3.8'
+  #gems used in testing 
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
   gem 'spork-rails', '4.0.0'
@@ -33,6 +42,7 @@ gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'therubyracer'
+#debugger
 gem 'byebug'
 
 group :doc do
