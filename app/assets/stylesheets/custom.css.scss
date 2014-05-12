@@ -10,6 +10,7 @@ $grayMediumLight: #eaeaea;
   box-sizing: border-box;
 }
 
+
 /* universal */
 
 html {
@@ -257,10 +258,12 @@ aside {
 /*hashtags*/
 
 .hashtags {
-  
   li{
     list-style-type: none;
     padding:0; 
     margin:0;
   }
+}
+.tags {
+  background-color: grey;
 }

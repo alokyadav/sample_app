@@ -1,6 +1,5 @@
 <ul class = "hashtags" >
-   	<h3>Popular Tags</h3>
-   	<hr>
+<h3>Popular Tags</h3>
 	<% @hashpopulartag.each do |hashtag| %>
   		<li><%= link_to hashtag.name, hashtag_path(hashtag.name) %></li>
 	<% end -%>

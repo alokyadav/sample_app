@@ -1,8 +1,9 @@
 SampleApp::Application.routes.draw do
 
 
-  get "hashtags/:hashtag",   to: "hashtags#show",      as: :hashtag
-  get "hashtags",            to: "hashtags#index",     as: :hashtags
+  #get "hashtags/:hashtag",   to: "hashtags#show",      as: :hashtag
+  #get "hashtags",            to: "hashtags#index",     as: :hashtags
+  resources :hashtags, only: [:index, :show]
   resources :users do
     member do
       get :following, :followers

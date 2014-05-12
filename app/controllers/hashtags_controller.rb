@@ -4,8 +4,10 @@ class HashtagsController < ApplicationController
   end
 
   def show
-    @hashtag = SimpleHashtag::Hashtag.find_by_name(params[:hashtag])
+  	#byebug
+    @hashtag = SimpleHashtag::Hashtag.find_by_name(params[:id])
     @hashtagged = @hashtag.hashtaggables if @hashtag
+
     #@hashtagged.sort!{|a,b|a.created_at <=> b.created_at}
     @hashtagged.reverse!
     #byebug
