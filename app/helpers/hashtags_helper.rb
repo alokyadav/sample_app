@@ -25,6 +25,7 @@ module HashtagsHelper
     h_dictArry.each do |key, value|
       @hashpopulartag << SimpleHashtag::Hashtag.find_by_name(key.to_sym)
     end
+    #@hashpopulartag
     render "hashtags/trending"
   end
 

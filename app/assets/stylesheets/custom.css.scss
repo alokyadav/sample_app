@@ -259,11 +259,13 @@ aside {
 
 .hashtags {
   li{
-    list-style-type: none;
+    list-style: none;
     padding:0; 
     margin:0;
   }
 }
-.tags {
-  background-color: grey;
+.hashtag_contents {
+  li{
+    list-style-type: none;
+  }
 }

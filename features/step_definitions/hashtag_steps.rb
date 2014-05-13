@@ -12,25 +12,75 @@ When /^the user submits valid signin information$/ do
   click_button "Sign in"
 end
 
-When /^they visit home page again/ do
+When /^the user visits home page again$/ do
 	visit root_url
 end
-When /^submit a micropost with hashtag/ do
+When /^the user submits a micropost with sample hashtag$/ do
 	fill_in 'micropost_content', with: "#kings dummy"
 	click_button "Post"
 end
 
-When /^click on hashtag/ do
+When /^the user submits multiple microposts with hashtag$/ do
+  20.times.each do |num|
+    steps %{
+      When submit a micropost with hashtag "#king-#{num} dummy"
+    }
+  end
+end
+
+When /^the user submits multiple microposts with repeated hashtag$/ do
+  50.times.each do |num|
+    steps %{
+      When submit a micropost with hashtag "#king-#{rand(11)} dummy"
+    }
+  end
+end
+
+When /^submit a micropost with hashtag "(.*?)"$/ do |arg|
+  fill_in 'micropost_content', with: arg
+  click_button "Post"
+end
+When /^the user clicks on hashtag$/ do
 	visit 'hashtags/kings'
 end
-Then /^they see Popular tags$/ do
-  expect(page).to have_content('Popular Tags')
+Then /^the user sees Popular tags$/ do
+  within('div#Popular_tags') do
+    expect(page).to have_content('Popular Tags')
+  end
 end 
-Then /^they see posted hashtag/ do
-	expect(page).to have_selector('li', text: 'kings')
+Then /^the user sees posted hashtag$/ do
+  within('div#Popular_tags') do
+    expect(page).to have_selector('li', text: 'kings')
+  end
 end
 
 
-Then /^have heading of tags/ do
+Then /^page have heading of tag$/ do
 	expect(page).to have_content('kings')
+end
+
+Then /^hashtag have link$/ do
+  within('div#Popular_tags') do
+    expect(page).to have_link('kings',href: '/hashtags/kings')
+  end
+end
+Then /^hashtag of feed is link$/ do
+  within('.microposts') do
+    expect(page).to have_link('#kings',href: '/hashtags/kings')
+  end
+end
+
+Then /^the user sees only ten popular tags$/ do
+  #within('div#Popular_tags') do
+    page.should have_css("div#Popular_tags li", :count => 10)
+  #end
+end
+
+Then /^order of tags is descending according to number of occurrence$/ do
+
+  arr = page.all("div#Popular_tags li a")
+  SimpleHashtag::Hashtag.find_by_name(arr[0].text.to_sym)
+
+  byebug
+
 end

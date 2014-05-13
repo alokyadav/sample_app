@@ -1,9 +1,10 @@
 <h1><%= params[:id] %></h1>
 <% if @hashtagged %>
+<ol class = "hashtag_contents">
   <% @hashtagged.each do |hashtagged| %>
     <%= render_hashtaggable hashtagged %>
-    <hr>
   <% end -%>
+</ol>
 <% else -%>
-  <p>There is no match for the <em><%= params[:hashtag] %></em> hashtag.</p>
+  <p>There is no match for the <em><%= params[:id] %></em> hashtag.</p>
 <% end -%>

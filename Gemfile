@@ -18,6 +18,8 @@ gem 'bootstrap-will_paginate', '0.0.9'
 #a simple hashtag gem used to parse a tweet and store tags and their corresponding tags in table used in micropost model
 gem 'simple_hashtag'
 
+gem "auto_html"
+
 group :development, :test do
   #database for app
   gem 'sqlite3', '1.3.8'
@@ -51,9 +53,9 @@ group :doc do
   gem 'sdoc', '0.3.20', require: false
 end
 
-# group :production do
-#   gem 'pg', '0.15.1'
-#   gem 'rails_12factor', '0.0.2'
-# end
+group :production do
+  gem 'pg', '0.15.1'
+  gem 'rails_12factor', '0.0.2'
+end
 
 
