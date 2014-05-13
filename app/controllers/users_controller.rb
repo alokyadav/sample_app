@@ -8,8 +8,14 @@ class UsersController < ApplicationController
 		@users = User.paginate(page: params[:page])
 	end
 	def show
-		@user = User.find(params[:id])
-		@microposts = @user.microposts.paginate(page: params[:page])
+		@users = User.where(id: params[:id])
+		if @users.empty?
+			flash[:error] = "User does not exit!"
+			redirect_to root_url
+		else
+			@user = @users[0]
+			@microposts = @user.microposts.paginate(page: params[:page])
+		end
 	end
 	def new
 		@user = User.new
