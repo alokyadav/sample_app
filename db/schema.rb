@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509122038) do
+ActiveRecord::Schema.define(version: 20140602112621) do
+
+  create_table "mail_events", force: true do |t|
+    t.string  "recipient"
+    t.string  "secondary_tag"
+    t.string  "event_type"
+    t.float   "timestamp"
+    t.integer "mail_id"
+  end
+
+  create_table "mails", force: true do |t|
+    t.string  "sender"
+    t.string  "recipient"
+    t.string  "message_id"
+    t.string  "primary_tag"
+    t.string  "secondary_tag"
+    t.text    "subject"
+    t.integer "user_id"
+  end
 
   create_table "microposts", force: true do |t|
     t.string   "content"
